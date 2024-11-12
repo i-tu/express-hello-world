@@ -15,5 +15,6 @@ COPY . /app
 # -S Create a system user
 # -D Don't assign a password
 # -H Don't create home directory
-RUN adduser -D -H -S teamspective
+# -s noshell Don't assign a shell
+RUN adduser -D -H -S -s noshell teamspective
 USER teamspective

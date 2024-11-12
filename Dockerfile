@@ -1,5 +1,4 @@
 FROM node:20-alpine
-USER teamspective
 ARG RENDER_GIT_COMMIT
 
 RUN apk --no-cache add curl
@@ -12,3 +11,6 @@ COPY package.json pnpm-lock.yaml /app/
 
 RUN pnpm install --frozen-lockfile
 COPY . /app
+
+RUN adduser -D teamspective
+USER teamspective

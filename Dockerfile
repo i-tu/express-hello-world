@@ -13,4 +13,12 @@ RUN pnpm install --frozen-lockfile
 COPY . /app
 
 RUN mkdir ~/.ssh
-RUN echo "PermitRootLogin no" > ~/.ssh/config
+RUN echo -e "\
+Host *\n\
+    PasswordAuthentication no\n\
+    PubkeyAuthentication no\n\
+    ChallengeResponseAuthentication no\n\
+    KbdInteractiveAuthentication no\n\
+    GSSAPIAuthentication no\n\
+    HostbasedAuthentication no\n\
+" >> ~/.ssh/config

@@ -1,5 +1,5 @@
 FROM node:20-alpine
-
+USER teamspective
 ARG RENDER_GIT_COMMIT
 
 RUN apk --no-cache add curl

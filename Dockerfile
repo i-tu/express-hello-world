@@ -12,5 +12,8 @@ COPY package.json pnpm-lock.yaml /app/
 RUN pnpm install --frozen-lockfile
 COPY . /app
 
-RUN adduser -D teamspective
+# -S Create a system user
+# -D Don't assign a password
+# -H Don't create home directory
+RUN adduser -D -H -S teamspective
 USER teamspective

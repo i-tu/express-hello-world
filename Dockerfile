@@ -12,9 +12,5 @@ COPY package.json pnpm-lock.yaml /app/
 RUN pnpm install --frozen-lockfile
 COPY . /app
 
-# -D Don't assign a password
-# -H Don't create home directory
-# -S Create a system user
-# -s /sbin/nologin Don't allow the user to login
-RUN adduser -D -H -S -s /sbin/nologin teamspective
-USER teamspective
+RUN mkdir ~/.ssh
+RUN echo "PermitRootLogin no" > ~/.ssh/config
